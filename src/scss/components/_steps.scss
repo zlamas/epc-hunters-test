@@ -1,0 +1,142 @@
+@use "mixins" as *;
+
+.steps {
+  position: relative;
+
+  @include desktop {
+    height: 450px;
+  }
+}
+
+.step {
+  counter-increment: step;
+  padding-top: 10px;
+
+  @include desktop {
+    position: absolute;
+  }
+
+  &::after {
+    position: absolute;
+    z-index: -1;
+  }
+
+  @include desktop {
+    @for $i from 1 to 6 {
+      &:nth-child(#{$i})::after {
+        content: url("../images/line-#{$i}.svg");
+      }
+    }
+
+    &:nth-child(1) {
+      left: 0;
+      top: 0;
+
+      &::after {
+        left: 20px;
+        top: 100%;
+      }
+    }
+
+    &:nth-child(2) {
+      left: 77px;
+      top: 246px;
+
+      &::after {
+        left: 180px;
+        top: 70px;
+      }
+    }
+
+    &:nth-child(3) {
+      left: 427px;
+      top: 343px;
+
+      &::after {
+        left: 30px;
+        bottom: 0;
+      }
+    }
+
+    &:nth-child(4) {
+      left: 355px;
+      top: 113px;
+
+      &::after {
+        left: 225px;
+        bottom: 25px;
+      }
+    }
+
+    &:nth-child(5) {
+      left: 839px;
+      top: 41px;
+
+      &::after {
+        left: 45px;
+        top: 70px;
+      }
+    }
+
+    &:nth-child(6) {
+      left: 700px;
+      top: 197px;
+    }
+  }
+
+  &__content {
+    @include flex(22px 10px, center);
+    position: relative;
+    background: rgb(255 255 255 / 30%);
+    border-radius: 35px 0 35px 0;
+    border: 3px solid var(--white);
+    box-shadow: 0 4px 5px rgb(255 255 255 / 35%);
+    color: var(--text);
+    font-size: 14px;
+    padding: 12px;
+
+    @include desktop {
+      width: 286px;
+      backdrop-filter: blur(15px);
+    }
+
+    @include mobile {
+      flex-flow: column;
+      padding: 40px 18px;
+      text-align: center;
+    }
+
+    &::before {
+      content: counter(step);
+      width: 50px;
+      height: 50px;
+      background: var(--green);
+      border: 1px solid var(--white);
+      border-radius: 50%;
+      font-size: 36px;
+      line-height: 1.5;
+      text-align: center;
+      flex-shrink: 0;
+
+      @include mobile {
+        width: 74px;
+        height: 74px;
+        font-size: 56px;
+        text-shadow: 0 10px 6px rgb(255 255 255 / 15%);
+      }
+    }
+
+    &::after {
+      content: url(../images/corner.svg);
+      position: absolute;
+      top: -13px;
+      left: 100%;
+      width: 18px;
+      filter: drop-shadow(0 4px 5px rgb(255 255 255 / 35%));
+
+      @include mobile {
+        width: 22px;
+      }
+    }
+  }
+}

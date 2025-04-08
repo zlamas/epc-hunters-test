@@ -1,0 +1,22 @@
+@use "mixins" as *;
+
+.container {
+  max-width: 1280px;
+  margin: auto;
+  padding: 0 70px;
+
+  @include mobile {
+    padding: 0;
+  }
+}
+
+.h1 {
+  font-size: 90px;
+  margin-bottom: 48px;
+  text-align: center;
+
+  @include mobile {
+    font-size: 35px;
+    margin-bottom: 0;
+  }
+}

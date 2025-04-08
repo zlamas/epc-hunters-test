@@ -1,0 +1,69 @@
+@use "sass:color";
+@use "sass:list";
+
+$desktop: 1280px;
+
+@mixin font-face($family, $name, $weight) {
+  @font-face {
+    font-family: "#{$family}";
+    src: url("../fonts/#{$name}.woff2") format("woff2");
+    font-weight: $weight;
+    font-display: swap;
+  }
+}
+
+@mixin flex($gap: 0, $options...) {
+  @if list.index($options, inline) {
+    display: inline-flex;
+  } @else {
+    display: flex;
+  }
+
+  @if $gap != 0 {
+    gap: $gap;
+  }
+
+  @if list.index($options, column) {
+    flex-direction: column;
+  }
+
+  @if list.index($options, center) {
+    align-items: center;
+  }
+
+  @if list.index($options, wrap) {
+    flex-wrap: wrap;
+  }
+}
+
+@mixin grid($gap: 0) {
+  display: grid;
+
+  @if $gap != 0 {
+    gap: $gap;
+  }
+}
+
+@mixin desktop {
+  @media (min-width: $desktop) {
+    @content
+  }
+}
+
+@mixin mobile {
+  @media (max-width: #{$desktop - 1}) {
+    @content
+  }
+}
+
+@include mobile {
+  .desktop-only {
+    display: none !important;
+  }
+}
+
+@include desktop {
+  .mobile-only {
+    display: none !important;
+  }
+}

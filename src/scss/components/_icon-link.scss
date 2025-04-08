@@ -1,0 +1,22 @@
+@use "mixins" as *;
+
+.icon-link {
+  @include flex(20px, center);
+  justify-content: space-between;
+  min-width: 162px;
+  border-bottom: 1px solid;
+  text-transform: uppercase;
+
+  &::after {
+    content: var(--link-icon);
+    height: 20px;
+  }
+
+  &--arrow {
+    --link-icon: url(../images/arrow.svg);
+  }
+
+  &--menu {
+    --link-icon: url(../images/arrow-black.svg);
+  }
+}

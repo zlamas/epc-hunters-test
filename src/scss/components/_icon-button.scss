@@ -1,0 +1,14 @@
+.icon-button {
+  width: 40px;
+  height: 40px;
+  background: center / contain no-repeat;
+  cursor: pointer;
+
+  &--burger {
+    background-image: url(../images/burger.svg);
+  }
+
+  &--close {
+    background-image: url(../images/close.svg);
+  }
+}

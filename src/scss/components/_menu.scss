@@ -1,0 +1,37 @@
+@use "mixins" as *;
+
+.menu {
+  position: fixed;
+  inset: 0;
+  background: rgb(0 0 0 / 56%);
+  color: #000;
+  line-height: normal;
+  visibility: hidden;
+  z-index: 99;
+
+  &--open {
+    visibility: visible;
+  }
+
+  &__content {
+    @include flex(0, center, column);
+    background: var(--white);
+    padding: 30px 15px;
+  }
+
+  &__top {
+    @include flex(10px, center);
+    align-self: stretch;
+    font-size: 12px;
+  }
+
+  &__title {
+    color: #F2F3EF;
+    flex: 1;
+  }
+
+  &__links {
+    @include flex(15px, center, column);
+    margin: 20px 0 30px;
+  }
+}

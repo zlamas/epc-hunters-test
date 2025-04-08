@@ -1,0 +1,46 @@
+@use "mixins" as *;
+
+@include mobile {
+  .slider {
+    &__slides {
+      @include flex(50px);
+      overflow-x: auto;
+      scroll-behavior: smooth;
+      scroll-snap-type: x mandatory;
+      scrollbar-width: none;
+      padding: 15px;
+    }
+
+    &__slide {
+      min-width: 100%;
+      scroll-snap-align: center;
+      scroll-snap-stop: always;
+    }
+
+    &__controls {
+      @include flex;
+      justify-content: space-between;
+      padding: 0 15px;
+    }
+
+    &__button {
+      @include flex(5px, center);
+      color: var(--text);
+      font-size: 14px;
+    }
+
+    &__prev {
+      &::before {
+        content: url(../images/arrow-left.svg);
+        line-height: 0;
+      }
+    }
+
+    &__next {
+      &::after {
+        content: url(../images/arrow-right.svg);
+        line-height: 0;
+      }
+    }
+  }
+}

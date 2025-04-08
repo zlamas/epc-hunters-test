@@ -1,0 +1,4 @@
+@use "mixins" as *;
+
+@include font-face("Actay", "Actay-Regular", 400);
+@include font-face("Actay", "ActayWide-Bold", 700);
